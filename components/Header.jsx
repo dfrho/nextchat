@@ -38,7 +38,7 @@ const HeaderDropdown = styled.div`
   height: 0;
 `;
 
-const Header = () => {
+export const Header = () => {
   return (
     <HeaderWrapper>
       <HeaderContainer>
