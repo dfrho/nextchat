@@ -17,7 +17,7 @@ export const Body = () => {
     ]);
     setLoading(true);
 
-    const response = await fetch('https://tubular-creponne-7095a9.netlify.app/.netlify/functions/query-openai', {
+    const response = await fetch('/.netlify/functions/queryopenai', {
       method: 'POST',
       body: JSON.stringify({ newMessage: message, messageHistory }),
     });
