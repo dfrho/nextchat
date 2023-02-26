@@ -2,7 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 import { MessageBar } from './MessageBar';
 import { MessageHistory } from './MessageHistory';
-import fetch from 'node-fetch';
 
 
 export const Body = () => {

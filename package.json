@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "babel -d dist",
+    "build": "next build",
     "start": "next start"
   },
   "dependencies": {
@@ -10,10 +10,5 @@
     "node-fetch": "^3.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.21.0",
-    "@babel/preset-env": "^7.20.2",
-    "@babel/preset-react": "^7.18.6"
   }
 }
