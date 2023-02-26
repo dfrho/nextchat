@@ -25,7 +25,8 @@ const StyledTextArea = styled.textarea`
   overflow: hidden;
   outline: none;
   transition: height 0.3s ease-in-out;
-  box-shadow: ${({ hasFocus }) => hasFocus && '0px 4px 4px rgba(0, 0, 0, 0.25)'};
+  box-shadow: ${({ hasFocus }) =>
+    hasFocus && '0px 4px 4px rgba(0, 0, 0, 0.25)'};
 
   &:focus {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -71,84 +72,94 @@ const SendIcon = styled.img`
   margin-right: 0.5rem;
 `;
 
-
 export const MessageBar = ({ onNewMessage, disabled }) => {
-    const [message, dispatchMessage] = useReducer(messageReducer, '');
-  
-    //reducer for message
-    function messageReducer(state, action) {
-      switch (action.type) {
-        case 'set':
-          return action.payload;
-        case 'reset':
-          return '';
-        default:
-          return state;
-      }
-    }
-  
-    const resetMessage = () => {
-      dispatchMessage({ type: 'reset' });
-    };
-  
-    const setMessage = (message) => {
-      dispatchMessage({ type: 'set', payload: message });
-    };
-  
-    //ref for textarea
-    const textAreaRef = useRef();
-  
-    //resizes textarea to fit content, called on input
-    const resize = () => {
-      textAreaRef.current.style.height = 'inherit';
-      textAreaRef.current.style.height = textAreaRef.current.scrollHeight + 'px';
-    };
-  
-    //whenever message changes, resize textarea
-    useEffect(() => {
-      resize();
-    }, [message]);
-  
-    //try to send message, if message is not empty newmessage is sent and
-    //message is reset
-    const tryNewMessage = () => {
-      if (message.trim() !== '') {
-        onNewMessage(message);
-        resetMessage();
-      }
-    };
-  
-    return (
-      <MessageBarContainer>
-        <StyledTextArea
-          ref={textAreaRef}
-          rows={1}
-          type='text'
-          placeholder='Enter your message'
-          onInput={(e) => {
-            setMessage(e.target.value);
-          }}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' && e.ctrlKey) {
-              tryNewMessage();
-            }
-          }}
-          value={message}
-        />
-        <SendButton
-          disabled={disabled}
-          onClick={() => {
-            tryNewMessage();
-            resetMessage();
-          }}
-        >
-          <SendIcon
-            src={disabled ? '/loading.svg' : '/icon-send.png'}
-            className={`w-6 h-6 }`}
-            alt=''
-          />
-        </SendButton>
-      </MessageBarContainer>
-    );
+  const [message, dispatchMessage] = useReducer(messageReducer, '');
+  const [focus, setFocus] = useState(false);
+
+  const handleFocus = () => {
+    setFocus(true);
   };
-  
+
+  const handleBlur = () => {
+    setFocus(false);
+  };
+
+  //reducer for message
+  function messageReducer(state, action) {
+    switch (action.type) {
+      case 'set':
+        return action.payload;
+      case 'reset':
+        return '';
+      default:
+        return state;
+    }
+  }
+
+  const resetMessage = () => {
+    dispatchMessage({ type: 'reset' });
+  };
+
+  const setMessage = (message) => {
+    dispatchMessage({ type: 'set', payload: message });
+  };
+
+  //ref for textarea
+  const textAreaRef = useRef();
+
+  //resizes textarea to fit content, called on input
+  const resize = () => {
+    textAreaRef.current.style.height = 'inherit';
+    textAreaRef.current.style.height = textAreaRef.current.scrollHeight + 'px';
+  };
+
+  //whenever message changes, resize textarea
+  useEffect(() => {
+    resize();
+  }, [message]);
+
+  //try to send message, if message is not empty newmessage is sent and
+  //message is reset
+  const tryNewMessage = () => {
+    if (message.trim() !== '') {
+      onNewMessage(message);
+      resetMessage();
+    }
+  };
+
+  return (
+    <MessageBarContainer>
+      <StyledTextArea
+        ref={textAreaRef}
+        hasFocus={focus}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        rows={1}
+        type="text"
+        placeholder="Enter your message"
+        onInput={(e) => {
+          setMessage(e.target.value);
+        }}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' && e.ctrlKey) {
+            tryNewMessage();
+          }
+        }}
+        value={message}
+      />
+      <SendButton
+        disabled={disabled}
+        onClick={() => {
+          tryNewMessage();
+          resetMessage();
+        }}
+      >
+        <SendIcon
+          src={disabled ? '/loading.svg' : '/icon-send.png'}
+          className={`w-6 h-6 }`}
+          alt=""
+        />
+      </SendButton>
+    </MessageBarContainer>
+  );
+};
