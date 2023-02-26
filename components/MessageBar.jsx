@@ -18,7 +18,7 @@ const MessageBarContainer = styled.div`
 const StyledTextArea = styled.textarea`
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
-  width: 100%;
+  width: 60%;
   font-size: 1rem;
   resize: none;
   overflow: hidden;
