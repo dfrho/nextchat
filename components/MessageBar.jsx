@@ -72,6 +72,17 @@ const SendIcon = styled.img`
 
 export const MessageBar = ({ onNewMessage, disabled }) => {
     const [message, dispatchMessage] = useReducer(messageReducer, '');
+    const [focus, setFocus] = useState(false);
+    const handleFocus = () => {
+        setFocus(true);
+      };
+      
+    const handleBlur = () => {
+        setFocus(false);
+    };
+
+
+  
   
     //reducer for message
     function messageReducer(state, action) {
@@ -132,6 +143,9 @@ export const MessageBar = ({ onNewMessage, disabled }) => {
             }
           }}
           value={message}
+          hasFocus={focus}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
         <SendButton
           disabled={disabled}
