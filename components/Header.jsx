@@ -1,15 +1,50 @@
+import styled from 'styled-components';
 
-//just a simple header
-export const Header = () => {
-	return (
-		<div className='bg-blue-800 py-4 text-white font-semibold w-screen  shadow-2xl text-xl'>
-			<div className='px-6 container flex justify-between'>
-				<span>OPEN AI CHAT</span>
-				<div
-					className={`absolute bg-blue-800 overflow-hidden transition-all px-8 w-96 right-0 top-14 z-40 ${'h-0'
-					}`}
-				></div>
-			</div>
-		</div>
-	);
+const HeaderWrapper = styled.div`
+  background-color: #1e40af;
+  padding: 1rem 0;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  font-size: 1.25rem;
+  width: 100%;
+`;
+
+const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const HeaderTitle = styled.span`
+  /* Use the Tailwind CSS class name for the font color */
+  color: #fff;
+`;
+
+const HeaderDropdown = styled.div`
+  position: absolute;
+  background-color: #1e40af;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  padding: 1rem 2rem;
+  width: 24rem;
+  right: 0;
+  top: 3.5rem;
+  z-index: 40;
+  /* Use the Tailwind CSS class name for the height */
+  height: 0;
+`;
+
+const Header = () => {
+  return (
+    <HeaderWrapper>
+      <HeaderContainer>
+        <HeaderTitle>OPEN AI CHAT</HeaderTitle>
+        <HeaderDropdown />
+      </HeaderContainer>
+    </HeaderWrapper>
+  );
 };
