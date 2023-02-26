@@ -12,11 +12,11 @@ const BubblesContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: ${({ sender }) => (sender === 'me' ? 'flex-start' : 'flex-end')};
-  width: 60%;
+  width: 100%;
+  max-width: 600px;
   overflow: auto;
-  max-height: 80vh;
+  max-height: calc(100vh - 200px);
 `;
-
 
 export const MessageHistory = ({ messageHistory }) => {
   const messageHistoryRef = useRef(null);

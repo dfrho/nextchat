@@ -8,6 +8,10 @@ const HeaderWrapper = styled.div`
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
   font-size: 1.25rem;
   width: 100%;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const HeaderContainer = styled.div`
@@ -17,13 +21,20 @@ const HeaderContainer = styled.div`
   padding: 0 1rem;
   max-width: 1200px;
   margin: 0 auto;
+
+  @media only screen and (max-width: 480px) {
+    padding: 0.5rem;
+  }
 `;
 
 const HeaderTitle = styled.span`
   text-align: center;
   color: #fff;
-`;
 
+  @media only screen and (max-width: 768px) {
+    font-size: 0.875rem;
+  }
+`;
 
 export const Header = () => {
   return (

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// Create a styled div for the message bubble
 const Bubble = styled.div`
   background: linear-gradient(
     to ${({ sender }) => (sender === 'me' ? 'right' : 'left')},
@@ -17,10 +16,8 @@ const Bubble = styled.div`
   animation-duration: 0.5s;
   animation-fill-mode: both;
   animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  margin: 10 0 10 0;
+  margin: 10px 0;
 
-
-  /* Add different styles depending on sender */
   ${({ sender }) =>
     sender === 'me'
       ? `
@@ -33,14 +30,18 @@ const Bubble = styled.div`
       border-top-left-radius: 0;
       animation-name: fadeInLeft;
     `}
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    padding: 0.8rem;
+    max-width: 80%;
+  }
 `;
 
-// Message component, renders a single message.
 export const Message = ({ message, sender }) => {
   return (
     <>
       <Bubble sender={sender}>
-        {/* Split the message by line and wrap each line in a span */}
         {message.split('\n').map((line, i) => (
           <span key={i}>
             {line}
