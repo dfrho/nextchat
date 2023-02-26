@@ -6,9 +6,9 @@ import styled from 'styled-components';
 const MessageBarContainer = styled.div`
   display: flex;
   padding: 1rem;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 0.5rem;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
   max-width: 800px;
   position: fixed;
