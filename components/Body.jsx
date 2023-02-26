@@ -21,6 +21,7 @@ const HistoryContainer = styled.div`
   flex-grow: 1;
   width: 100%;
   overflow-y: auto;
+  padding-bottom: 70px; 
 
   @media (max-width: 768px) {
     margin-bottom: 1rem;
@@ -30,6 +31,8 @@ const HistoryContainer = styled.div`
 const BarContainer = styled.div`
   flex-shrink: 0;
   width: 100%;
+  position: fixed;
+  bottom: 0;
 
   @media (max-width: 768px) {
     position: fixed;
