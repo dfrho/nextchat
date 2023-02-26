@@ -6,7 +6,7 @@ import fetch from 'isomorphic-fetch';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  min-height: 85%;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -21,7 +21,6 @@ const HistoryContainer = styled.div`
   flex-grow: 1;
   width: 100%;
   overflow-y: auto;
-  padding-bottom: 70px; 
 
   @media (max-width: 768px) {
     margin-bottom: 1rem;
