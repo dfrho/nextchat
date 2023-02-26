@@ -2,7 +2,11 @@ import styled from 'styled-components';
 
 // Create a styled div for the message bubble
 const Bubble = styled.div`
-  background: linear-gradient(to right, #0d6efd, #0dcaf0);
+  background: linear-gradient(
+    to ${({ sender }) => (sender === 'me' ? 'right' : 'left')},
+    #0d6efd,
+    #0dcaf0
+  );
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   color: white;
   max-width: 60%;
@@ -13,6 +17,8 @@ const Bubble = styled.div`
   animation-duration: 0.5s;
   animation-fill-mode: both;
   animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin: 10 0 10 0;
+
 
   /* Add different styles depending on sender */
   ${({ sender }) =>

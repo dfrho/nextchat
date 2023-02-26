@@ -1,27 +1,38 @@
+import styled from 'styled-components';
 import { useEffect, useRef } from 'react';
 import { Message } from './Message';
 
-//receives the message history from the parent component, renders the messages
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const BubblesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: ${({ sender }) => (sender === 'me' ? 'flex-start' : 'flex-end')};
+  width: 100%;
+`;
+
 export const MessageHistory = ({ messageHistory }) => {
-	//scrolls to the bottom of the message history when a new message is added
-    const messageHistoryRef = useRef(null);
-	useEffect(() => {
-		const me = document.getElementById('message-history');
-		me.scrollTo({
-			left: 0,
-			top: me.scrollHeight,
-			behavior: 'smooth',
-		});
-	}, [messageHistory]);
-	return (
-		<div
-            ref={messageHistoryRef}
-			id='message-history'
-			className='w-full p-4  flex flex-col gap-3 overflow-y-auto overflow-x-hidden h-11/12 flex-grow container'
-		>
-			{messageHistory.map(({ text, sender }, i) => {
-				return <Message message={text} sender={sender} key={i} />;
-			})}
-		</div>
-	);
+  const messageHistoryRef = useRef(null);
+
+  useEffect(() => {
+    messageHistoryRef.current.scrollTo({
+      left: 0,
+      top: messageHistoryRef.current.scrollHeight,
+      behavior: 'smooth',
+    });
+  }, [messageHistory]);
+
+  return (
+    <Container>
+      <BubblesContainer ref={messageHistoryRef}>
+        {messageHistory.map(({ text, sender }, i) => (
+          <Message message={text} sender={sender} key={i} />
+        ))}
+      </BubblesContainer>
+    </Container>
+  );
 };
