@@ -13,6 +13,7 @@ const MessageBarContainer = styled.div`
 
   @media screen and (max-width: 480px) {
     padding: 0.5rem;
+    max-width: 100%;
   }
 `;
 
