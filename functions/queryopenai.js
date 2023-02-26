@@ -37,6 +37,10 @@ exports.handler = async (event) => {
     'https://api.openai.com/v1/completions',
     requestOptions
   );
+  console.log(
+    '🚀 ~ file: queryopenai.js:40 ~ exports.handler= ~ response:',
+    response
+  );
   const data = await response.json();
   console.log('🚀 ~ file: queryopenai.js:41 ~ exports.handler= ~ data:', data);
 
