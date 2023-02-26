@@ -128,7 +128,7 @@ export const MessageBar = ({ onNewMessage, disabled }) => {
             }}
           >
             <SendIcon
-              src={disabled ? '/loading' : '/icon-send'}
+              src={disabled ? '/loading.svg' : '/icon-send.png'}
               className={`w-6 h-6 }`}
               alt=''
             />
