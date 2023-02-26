@@ -11,6 +11,8 @@ const MessageBarContainer = styled.div`
   align-items: flex-start;
   width: 100%;
   max-width: 800px;
+  position: fixed;
+  bottom: 0;
 `;
 
 const StyledTextArea = styled.textarea`
