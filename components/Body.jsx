@@ -6,7 +6,7 @@ import fetch from 'isomorphic-fetch';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  height: 100%;
+  height: 85%;
   display: flex;
   flex-direction: column;
   overflow: hidden;

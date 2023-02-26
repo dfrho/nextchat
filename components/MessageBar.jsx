@@ -1,6 +1,66 @@
 import iconSend from '../assets/icon-send.png';
 import { useRef, useEffect, useReducer } from 'react';
 import loading from '../assets/loading.svg';
+import styled from 'styled-components';
+
+const MessageBarContainer = styled.div`
+  display: flex;
+  padding: 1rem;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 800px;
+`;
+
+const StyledTextArea = styled.textarea`
+  background: linear-gradient(to right, #1e3a8a, #2a5298);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+  outline: none;
+  transition: height 0.3s ease-in-out;
+  box-shadow: ${({ hasFocus }) => hasFocus && '0px 4px 4px rgba(0, 0, 0, 0.25)'};
+
+  &:focus {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+`;
+
+const SendButton = styled.button`
+  background-color: #1d4ed8;
+  color: white;
+  border-radius: 1.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &:disabled {
+    background-color: #718096;
+    cursor: not-allowed;
+  }
+`;
+
+const SendIcon = styled.img`
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+`;
+
+
+
 export const MessageBar = ({ onNewMessage, disabled }) => {
 	const [message, dispatchMessage] = useReducer(messageReducer, '');
 
@@ -46,37 +106,36 @@ export const MessageBar = ({ onNewMessage, disabled }) => {
 	};
 
 	return (
-		<div className='flex p-4 justify-start gap-2 items-start container'>
-			<textarea
-				ref={textAreaRef}
-				rows={1}
-				className='bg-gradient-to-r from-blue-800 to-blue-900 px-4 py-2 text-white rounded-md w-full resize-none overflow-hidden h-auto outline-none focus:shadow-2xl  duration-300 ease-in-out'
-				type='text'
-				placeholder='Enter your message'
-				onInput={(e) => {
-					setMessage(e.target.value);
-				}}
-				onKeyDown={(e) => {
-					if (e.key === 'Enter' && e.ctrlKey) {
-						tryNewMessage();
-					}
-				}}
-				value={message}
-			/>
-			<button
-				disabled={disabled}
-				className='bg-blue-900 rounded-3xl px-6 py-2 font-bold text-lg text-white  -translate-x-0 disabled:bg-slate-600'
-				onClick={() => {
-					tryNewMessage();
-					resetMessage();
-				}}
-			>
-				<img
-					src={disabled ? loading : iconSend}
-					className={`w-6 h-6 }`}
-					alt=''
-				/>
-			</button>
-		</div>
-	);
+        <MessageBarContainer>
+          <StyledTextArea
+            ref={textAreaRef}
+            rows={1}
+            type='text'
+            placeholder='Enter your message'
+            onInput={(e) => {
+              setMessage(e.target.value);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && e.ctrlKey) {
+                tryNewMessage();
+              }
+            }}
+            value={message}
+          />
+          <SendButton
+            disabled={disabled}
+            onClick={() => {
+              tryNewMessage();
+              resetMessage();
+            }}
+          >
+            <SendIcon
+              src={disabled ? loading : iconSend}
+              className={`w-6 h-6 }`}
+              alt=''
+            />
+          </SendButton>
+        </MessageBarContainer>
+      );
+      
 };
