@@ -42,7 +42,7 @@ exports.handler = async (event) => {
     response
   );
   const data = await response.json();
-  console.log('🚀 ~ file: queryopenai.js:41 ~ exports.handler= ~ data:', data);
+  console.log('🚀 file: queryopenai.js:41 ~ exports.handler= ~ data:', data);
 
   return {
     statusCode: 200,
