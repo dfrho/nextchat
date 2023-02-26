@@ -42,7 +42,7 @@ const BarContainer = styled.div`
     border-top: 1px solid #ccc;
     z-index: 1;
   }
-
+`
 
 export const Body = () => {
   const [messageHistory, setMessageHistory] = useState([]);
