@@ -23,9 +23,7 @@ export const Body = () => {
       method: 'POST',
       body: JSON.stringify({ newMessage: message, messageHistory }),
     });
-    console.log("🚀 ~ file: Body.jsx:24 ~ onNewMessage ~ response:", response)
     const data = await response.json();
-    console.log("🚀 file: Body.jsx:26 ~ onNewMessage ~ data:", data)
 
     setMessageHistory((prev) => [
       ...prev,
