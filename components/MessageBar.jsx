@@ -14,8 +14,6 @@ const MessageBarContainer = styled.div`
 `;
 
 const StyledTextArea = styled.textarea`
-  background: linear-gradient(to right, #1e3a8a, #2a5298);
-  color: white;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   width: 100%;
