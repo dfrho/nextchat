@@ -3,12 +3,10 @@ import styled from 'styled-components';
 
 const MessageBarContainer = styled.div`
   display: flex;
-  flex-direction: column;
   padding: 1rem;
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 600px;
   position: relative;
 
   @media screen and (max-width: 480px) {
