@@ -28,7 +28,6 @@ const HistoryContainer = styled.div`
 `;
 
 const BarContainer = styled.div`
-  flex-shrink: 0;
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -44,7 +43,7 @@ const BarContainer = styled.div`
     border-top: 1px solid #ccc;
     z-index: 1;
   }
-`
+`;
 
 export const Body = () => {
   const [messageHistory, setMessageHistory] = useState([]);
@@ -54,7 +53,10 @@ export const Body = () => {
     setMessageHistory((prev) => [
       ...prev,
       {
-        text: message.replace(/^([\n]*)/g, '').replace(/([\n]*)$/g, '').trim(),
+        text: message
+          .replace(/^([\n]*)/g, '')
+          .replace(/([\n]*)$/g, '')
+          .trim(),
         sender: 'me',
       },
     ]);
@@ -69,7 +71,10 @@ export const Body = () => {
     setMessageHistory((prev) => [
       ...prev,
       {
-        text: data.result.replace(/^([\n]*)/g, '').replace(/([\n]*)$/g, '').trim(),
+        text: data.result
+          .replace(/^([\n]*)/g, '')
+          .replace(/([\n]*)$/g, '')
+          .trim(),
         sender: 'bot',
       },
     ]);
