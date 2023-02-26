@@ -13,8 +13,6 @@ const BubblesContainer = styled.div`
   flex-direction: column;
   align-items: ${({ sender }) => (sender === 'me' ? 'flex-start' : 'flex-end')};
   width: 60%;
-  border: 1px solid #d2d6dc;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   overflow: auto;
   max-height: 80vh;
 `;
