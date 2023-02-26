@@ -1,4 +1,4 @@
-import { useRef, useEffect, useReducer } from 'react';
+import { useRef, useEffect, useReducer, useState } from 'react';
 import styled from 'styled-components';
 
 const MessageBarContainer = styled.div`
@@ -6,8 +6,9 @@ const MessageBarContainer = styled.div`
   padding: 1rem;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  position: relative;
+  width: ${({ hasFocus }) => (hasFocus ? '90%' : '100%')};
+  position: ${({ hasFocus }) => (hasFocus ? 'absolute' : 'relative')};
+  bottom: 0;
 
   @media screen and (max-width: 480px) {
     padding: 0.5rem;
@@ -69,6 +70,7 @@ const SendIcon = styled.img`
   height: 1.5rem;
   margin-right: 0.5rem;
 `;
+
 
 export const MessageBar = ({ onNewMessage, disabled }) => {
     const [message, dispatchMessage] = useReducer(messageReducer, '');
@@ -149,3 +151,4 @@ export const MessageBar = ({ onNewMessage, disabled }) => {
       </MessageBarContainer>
     );
   };
+  
