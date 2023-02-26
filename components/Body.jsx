@@ -24,18 +24,8 @@ export const Body = () => {
       body: JSON.stringify({ newMessage: message, messageHistory }),
     });
     console.log("🚀 ~ file: Body.jsx:24 ~ onNewMessage ~ response:", response)
-    // const data = await response.json();
-    const reader = response.body.getReader();
-let data = '';
-while (true) {
-  const { done, value } = await reader.read();
-  if (done) {
-    break;
-  }
-  data += new TextDecoder('utf-8').decode(value);
-}
-
-    console.log("🚀 ~ file: Body.jsx:26 ~ onNewMessage ~ data:", data)
+    const data = await response.json();
+    console.log("🚀 file: Body.jsx:26 ~ onNewMessage ~ data:", data)
 
     setMessageHistory((prev) => [
       ...prev,
