@@ -1,6 +1,4 @@
-import iconSend from '../assets/icon-send.png';
 import { useRef, useEffect, useReducer } from 'react';
-import loading from '../assets/loading.svg';
 import styled from 'styled-components';
 
 const MessageBarContainer = styled.div`
