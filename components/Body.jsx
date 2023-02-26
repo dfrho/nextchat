@@ -4,6 +4,7 @@ import { MessageBar } from './MessageBar';
 import { MessageHistory } from './MessageHistory';
 import fetch from 'node-fetch';
 
+
 export const Body = () => {
   const [messageHistory, setMessageHistory] = useState([]);
   const [loading, setLoading] = useState(false);
