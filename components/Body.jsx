@@ -3,7 +3,14 @@ import { useState } from 'react';
 import { MessageBar } from './MessageBar';
 import { MessageHistory } from './MessageHistory';
 import fetch from 'isomorphic-fetch';
+import styled from 'styled-components';
 
+const Container = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`;
 
 export const Body = () => {
   const [messageHistory, setMessageHistory] = useState([]);
@@ -36,9 +43,9 @@ export const Body = () => {
   };
 
   return (
-    <div className='h-full flex flex-col overflow-hidden container'>
+    <Container>
       <MessageHistory messageHistory={messageHistory} />
       <MessageBar onNewMessage={onNewMessage} disabled={loading} />
-    </div>
+    </Container>
   );
 };

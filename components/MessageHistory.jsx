@@ -12,7 +12,7 @@ const BubblesContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: ${({ sender }) => (sender === 'me' ? 'flex-start' : 'flex-end')};
-  width: 100%;
+  width: 80%;
 `;
 
 export const MessageHistory = ({ messageHistory }) => {
