@@ -20,9 +20,10 @@ const HeaderContainer = styled.div`
 `;
 
 const HeaderTitle = styled.span`
-  /* Use the Tailwind CSS class name for the font color */
+  text-align: center;
   color: #fff;
 `;
+
 
 export const Header = () => {
   return (
