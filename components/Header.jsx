@@ -24,26 +24,11 @@ const HeaderTitle = styled.span`
   color: #fff;
 `;
 
-const HeaderDropdown = styled.div`
-  position: absolute;
-  background-color: #1e40af;
-  overflow: hidden;
-  transition: all 0.2s ease-in-out;
-  padding: 1rem 2rem;
-  width: 24rem;
-  right: 0;
-  top: 3.5rem;
-  z-index: 40;
-  /* Use the Tailwind CSS class name for the height */
-  height: 0;
-`;
-
 export const Header = () => {
   return (
     <HeaderWrapper>
       <HeaderContainer>
         <HeaderTitle>OPEN AI CHAT</HeaderTitle>
-        <HeaderDropdown />
       </HeaderContainer>
     </HeaderWrapper>
   );
