@@ -126,7 +126,7 @@ const MessageBar = ({ onNewMessage, disabled }) => {
     if (event.key === 'Enter') {
       event.preventDefault();
       if (!event.ctrlKey) {
-        document.getElementById('sendButton').click();
+        buttonRef.current.click();
       }
     }
   };
