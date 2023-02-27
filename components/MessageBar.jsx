@@ -72,7 +72,10 @@ const SendIcon = styled.img`
   margin-right: 0.5rem;
 `;
 
-export const MessageBar = ({ onNewMessage, disabled }) => {
+import { useRef, useEffect, useReducer, useState } from 'react';
+import styled from 'styled-components';
+
+const MessageBar = ({ onNewMessage, disabled }) => {
   const [message, dispatchMessage] = useReducer(messageReducer, '');
   const [focus, setFocus] = useState(false);
 
@@ -84,7 +87,6 @@ export const MessageBar = ({ onNewMessage, disabled }) => {
     setFocus(false);
   };
 
-  //reducer for message
   function messageReducer(state, action) {
     switch (action.type) {
       case 'set':
@@ -104,26 +106,30 @@ export const MessageBar = ({ onNewMessage, disabled }) => {
     dispatchMessage({ type: 'set', payload: message });
   };
 
-  //ref for textarea
   const textAreaRef = useRef();
 
-  //resizes textarea to fit content, called on input
   const resize = () => {
     textAreaRef.current.style.height = 'inherit';
     textAreaRef.current.style.height = textAreaRef.current.scrollHeight + 'px';
   };
 
-  //whenever message changes, resize textarea
   useEffect(() => {
     resize();
   }, [message]);
 
-  //try to send message, if message is not empty newmessage is sent and
-  //message is reset
   const tryNewMessage = () => {
     if (message.trim() !== '') {
       onNewMessage(message);
       resetMessage();
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      if (!event.ctrlKey) {
+        document.getElementById('sendButton').click();
+      }
     }
   };
 
@@ -140,11 +146,7 @@ export const MessageBar = ({ onNewMessage, disabled }) => {
         onInput={(e) => {
           setMessage(e.target.value);
         }}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' && e.ctrlKey) {
-            tryNewMessage();
-          }
-        }}
+        onKeyDown={handleKeyDown}
         value={message}
       />
       <SendButton
@@ -153,6 +155,7 @@ export const MessageBar = ({ onNewMessage, disabled }) => {
           tryNewMessage();
           resetMessage();
         }}
+        id="sendButton"
       >
         <SendIcon
           src={disabled ? '/loading.svg' : '/icon-send.png'}
@@ -163,3 +166,5 @@ export const MessageBar = ({ onNewMessage, disabled }) => {
     </MessageBarContainer>
   );
 };
+
+export default MessageBar;
