@@ -72,9 +72,6 @@ const SendIcon = styled.img`
   margin-right: 0.5rem;
 `;
 
-import { useRef, useEffect, useReducer, useState } from 'react';
-import styled from 'styled-components';
-
 const MessageBar = ({ onNewMessage, disabled }) => {
   const [message, dispatchMessage] = useReducer(messageReducer, '');
   const [focus, setFocus] = useState(false);
