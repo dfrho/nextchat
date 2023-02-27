@@ -104,6 +104,7 @@ const MessageBar = ({ onNewMessage, disabled }) => {
   };
 
   const textAreaRef = useRef();
+  const buttonRef = useRef(null);
 
   const resize = () => {
     textAreaRef.current.style.height = 'inherit';
@@ -147,6 +148,7 @@ const MessageBar = ({ onNewMessage, disabled }) => {
         value={message}
       />
       <SendButton
+        ref={buttonRef}
         disabled={disabled}
         onClick={() => {
           tryNewMessage();
