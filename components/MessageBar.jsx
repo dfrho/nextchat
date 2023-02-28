@@ -125,7 +125,7 @@ const MessageBar = ({ onNewMessage, disabled }) => {
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
-      if (!event.ctrlKey) {
+      if (!event.ctrlKey && event.shiftKey !== true) {
         buttonRef.current.click();
       }
     }

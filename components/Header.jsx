@@ -8,6 +8,7 @@ const HeaderWrapper = styled.div`
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
   font-size: 1.25rem;
   width: 100%;
+  font-family: 'Roboto', sans-serif;
 
   @media only screen and (max-width: 768px) {
     font-size: 1rem;
