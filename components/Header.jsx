@@ -40,7 +40,7 @@ export const Header = () => {
   return (
     <HeaderWrapper>
       <HeaderContainer>
-        <HeaderTitle>OPEN AI CHAT</HeaderTitle>
+        <HeaderTitle>OPENAI CHAT</HeaderTitle>
       </HeaderContainer>
     </HeaderWrapper>
   );
